@@ -1,3 +1,5 @@
+**Last Tested: 2022-12-19** on Ubuntu 22.04 with PDFLaTeX and Texmaker
+
 # What is this repository for?
 
 It's a holding pen for my personal notes on using LaTeX. I keep examples here to remind myself how to format tables, mathematical expressions, figures, source code, and more. 
@@ -17,3 +19,6 @@ Usage
 =====
 
 You'll need a complete LaTeX environment to compile the .tex file. Right now I use a Mac, so my environment of choice is MacTex. You can [download MacTex here](https://tug.org/mactex/).
+
+If you're on Linux, I recommend [Texmaker](https://www.xm1math.net/texmaker/), with PDFLaTeX to product the PDF file. 
+
