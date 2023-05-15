@@ -1,4 +1,4 @@
-**Last Tested: 2023-01-03** on Ubuntu 22.04 with texlive (pdflatex)
+**Last Tested: 2023-05-15** on Ubuntu 20.04 with texlive (pdflatex)
 
 # What is this repository for?
 
