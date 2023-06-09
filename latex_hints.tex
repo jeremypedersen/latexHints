@@ -8,7 +8,6 @@
 
 % Change margins - default margins are too broad
 \usepackage[margin=20mm]{geometry}
-%\usepackage[paperwidth=90mm]{geometry}% <-- better demonstrates the vertical alignment
 \usepackage{amsmath}
 
 % SOURCE CODE LISTING SETTINGS 
@@ -71,7 +70,7 @@ Or we can quote a range of line numbers from the file (lines 19 and 20, for exam
 
 % Include only specific lines from a file
 \vspace{5mm}
-\lstinputlisting[language=Python, firstline=19, lastline=20, caption=Rangoli generator specific]{test_code.py}
+\lstinputlisting[language=Python, firstline=19, lastline=20, caption=Rangoli generator specific part]{test_code.py}
 \vspace{5mm}
 
 % Forces content onto the next page, useful for documents which should look nice when printed out
@@ -112,6 +111,8 @@ We can also make a nice list:
 \end{enumerate}
 \vspace{2mm}
 
+Reference the previous equation with (\ref{eqn:eqlabel}).
+
 \noindent
 We can inline mathematical expressions such as this one "$4 \sigma_0$" using the "\$" sign. We can make mathematical expressions that occupy their own line, like this: 
 \[
@@ -120,15 +121,16 @@ u = \left(x - x_0\right) {1 \over 4 \sigma_0} \cos\left(\theta_0\right) - \left(
 
 \subsection{Second subsection}
 
-We can also make tables and charts using the array type like so:
+We can also make tables and charts using the array type like so.
 
+Let $\theta_0$ be a fixed, nonnegative real number smaller than $2\pi$, let $\phi$ be a function of the real variable $\theta \in [0, 2\pi)$ defined as follows:
 % Make an array or table
 \vspace{2mm}
-\[ \phi = \left\{ 
+\[ \phi \left(\theta\right) = \left\{ 
 \begin{array}{l l}
-\theta_0 + \theta_{pt} & \, \textrm{if} \, \theta_0 + \theta_{pt} \in [0,2 \pi)\\ 
-\theta_0 + \theta_{pt} + 2 \pi & \, \textrm{if} \, \ \theta_0 + \theta_{pt} < 0\\
-\theta_0 + \theta_{pt} - 2 \pi & \, \textrm{if} \, \theta_0 + \theta_{pt} \ge 2 \pi\\
+\theta_0 + \theta & \, \textrm{if} \, \theta_0 + \theta \in [0,2 \pi)\\ 
+\theta_0 + \theta + 2 \pi & \, \textrm{if} \, \ \theta_0 + \theta < 0\\
+\theta_0 + \theta - 2 \pi & \, \textrm{if} \, \theta_0 + \theta \ge 2 \pi\\
 \end{array} \right.
 \] 
 \vspace{2mm}
