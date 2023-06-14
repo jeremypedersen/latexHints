@@ -8,6 +8,7 @@
 
 % Change margins - default margins are too broad
 \usepackage[margin=20mm]{geometry}
+\usepackage{amsmath}
 
 % SOURCE CODE LISTING SETTINGS 
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
@@ -19,33 +20,31 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-% Formatting (line breaks, spacing, etc...) for code
-\lstset{ 
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  otherkeywords={*,...},           % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
 }
+
+\lstset{style=mystyle}
 
 % Set document title and author
 \title{\LaTeX \space{} Example \#1}
@@ -63,7 +62,7 @@ We can use the listing package to place source code into our documents from a fi
 
 % Include code from a file with filename indicated
 \vspace{5mm}
-\lstinputlisting[language=Python]{test_code.py}
+\lstinputlisting[language=Python, caption=Rangoli generator]{test_code.py}
 \vspace{5mm}
 
 \noindent
@@ -71,7 +70,7 @@ Or we can quote a range of line numbers from the file (lines 19 and 20, for exam
 
 % Include only specific lines from a file
 \vspace{5mm}
-\lstinputlisting[language=Python, firstline=19, lastline=20]{test_code.py}
+\lstinputlisting[language=Python, firstline=19, lastline=20, caption=Rangoli generator specific part]{test_code.py}
 \vspace{5mm}
 
 % Forces content onto the next page, useful for documents which should look nice when printed out
@@ -82,7 +81,7 @@ We can also place code directly into latex without importing it from a file:
 
 % Include code inline
 \vspace{5mm}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, caption=Python example]
 print("Hi, I'm Python 3!")
 \end{lstlisting}
 \vspace{5mm}
@@ -91,11 +90,15 @@ print("Hi, I'm Python 3!")
 
 We can create and format mathematical expressions like so:
 
-\vspace{2mm}
 % Format a mathematical expression
-$$x' = x \cdot s cos \theta - y \cdot s sin \theta + t_x$$
-$$y' = x \cdot s sin \theta + y \cdot s cos \theta + t_y$$
-\vspace{2mm}
+\begin{align}
+\label{eqn:eqlabel}
+\begin{split}
+x' = x \cdot s \cos\left(\theta\right) - y \cdot s \sin\left(\theta\right) + t_x
+\\
+y' = x \cdot s \sin\left(\theta\right) + y \cdot s \cos\left(\theta\right) + t_y
+\end{split}
+\end{align}
 
 \noindent
 We can also make a nice list:
@@ -108,24 +111,27 @@ We can also make a nice list:
 \end{enumerate}
 \vspace{2mm}
 
+Reference the previous equation with (\ref{eqn:eqlabel}).
+
 \noindent
 We can inline mathematical expressions such as this one "$4 \sigma_0$" using the "\$" sign. We can make mathematical expressions that occupy their own line, like this: 
-\vspace{2mm}
-$$u = (x - x_0) \frac{1}{4 \sigma_0} cos \theta_0 - (y - y_0) \frac{1}{4 \sigma_0} sin \theta_0 + 4 = (0 - 16) \frac{1}{4} - 0 + 4$$
-\vspace{2mm}
+\[
+u = \left(x - x_0\right) {1 \over 4 \sigma_0} \cos\left(\theta_0\right) - \left(y - y_0\right) {1 \over 4 \sigma_0} \sin\left(\theta_0\right) + 4 = \left(0 - 16\right) \frac{1}{4} - 0 + 4
+\]
 
 \subsection{Second subsection}
 
-We can also make tables and charts using the array type like so:
+We can also make tables and charts using the array type like so.
 
+Let $\theta_0$ be a fixed, nonnegative real number smaller than $2\pi$, let $\phi$ be a function of the real variable $\theta \in [0, 2\pi)$ defined as follows:
 % Make an array or table
 \vspace{2mm}
-\[ \phi = \left\{ 
+\[ \phi \left(\theta\right) = \left\{ 
 \begin{array}{l l}
-\theta_0 + \theta_{pt} & if \ \theta_0 + \theta_{pt} \in [0,2 \pi)\\ 
-\theta_0 + \theta_{pt} + 2 \pi & if \ \theta_0 + \theta_{pt} < 0\\
-\theta_0 + \theta_{pt} - 2 \pi & if \ \theta_0 + \theta_{pt} \ge 2 \pi\\
-\end{array} \right\}
+\theta_0 + \theta & \, \textrm{if} \, \theta_0 + \theta \in [0,2 \pi)\\ 
+\theta_0 + \theta + 2 \pi & \, \textrm{if} \, \ \theta_0 + \theta < 0\\
+\theta_0 + \theta - 2 \pi & \, \textrm{if} \, \theta_0 + \theta \ge 2 \pi\\
+\end{array} \right.
 \] 
 \vspace{2mm}
 
@@ -176,6 +182,8 @@ We can make a table with centered elements:
 \vspace{5mm}
 
 \noindent
-There you go! That should be enough to get you started on LaTeX!
+There you go! That should be enough to get you started on \LaTeX!
+
+\lstlistoflistings
 
 \end{document}
